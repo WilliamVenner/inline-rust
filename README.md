@@ -1,14 +1,15 @@
 # inline-rust
 
-This is a stupid macro inspired by [`inline_python`](https://github.com/fusion-engineering/inline-python) that compiles and executes Rust and spits the output directly into your Rust code.
+This is a stupid macro inspired by [`inline-python`](https://github.com/fusion-engineering/inline-python) that compiles and executes Rust and spits the output directly into your Rust code.
 
 This really should not be used in production. It's slow, dangerous, and cursed.
 
-However, there is a use case of using it to evaluate advanced const expressions, see the example below.
+However, there is a use case of using it to evaluate advanced "const" expressions, see the example below.
 
 # Example
 
 ```rust
+// Compiles using cargo
 const CONST_HASH: &'static str = inline_rust!(
     r#"
         [dependencies]
@@ -26,6 +27,7 @@ const CONST_HASH: &'static str = inline_rust!(
     }
 );
 
+// Compiles using rustc
 const CONST_FOR_LOOP: i32 = inline_rust!({
     let mut sum: i32 = 0;
     for n in 0..30 {

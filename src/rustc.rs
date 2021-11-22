@@ -9,7 +9,6 @@ pub(crate) fn try_inline(storage_dir: OutputDir, code: &str) -> Result<TokenStre
 	let output = Command::new("rustc")
 		.args(&[
 			"-Ctarget-cpu=native",
-			"-Copt-level=0",
 			&format!("-o{}", executable_path.display()),
 			&format!("{}", input_path.display()),
 		])
