@@ -1,8 +1,8 @@
 use super::*;
 
 pub(crate) fn try_inline(
-	storage_dir: OutputDir,
 	target_dir: TargetDir,
+	storage_dir: StorageDir,
 	manifest: &str,
 	code: &str,
 ) -> Result<TokenStream, InlineRustError> {

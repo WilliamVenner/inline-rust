@@ -2,9 +2,14 @@
 
 This is a stupid macro inspired by [`inline-python`](https://github.com/fusion-engineering/inline-python) that compiles and executes Rust and spits the output directly into your Rust code.
 
-This really should not be used in production. It's slow, dangerous, and cursed.
+There is a use case of using it to evaluate advanced "const" expressions, see the example below... if you dare.
 
-However, there is a use case of using it to evaluate advanced "const" expressions, see the example below.
+# Usage
+
+```toml
+[dependencies]
+inline-rust = "*"
+```
 
 # Example
 

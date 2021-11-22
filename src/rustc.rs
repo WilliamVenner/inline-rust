@@ -1,6 +1,6 @@
 use super::*;
 
-pub(crate) fn try_inline(storage_dir: OutputDir, code: &str) -> Result<TokenStream, InlineRustError> {
+pub(crate) fn try_inline(storage_dir: StorageDir, code: &str) -> Result<TokenStream, InlineRustError> {
 	let input_path = storage_dir.join("inline_rust.rs");
 	let executable_path = storage_dir.join("inline_rust");
 

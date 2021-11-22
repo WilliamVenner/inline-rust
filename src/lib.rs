@@ -19,7 +19,7 @@ use quote::ToTokens;
 use sha2::Digest;
 
 mod storage;
-use storage::{OutputDir, TargetDir};
+use storage::{StorageDir, TargetDir};
 
 mod cargo;
 mod rustc;
@@ -74,6 +74,7 @@ fn exec_id(code: &str) -> String {
 /// ```no_run
 /// #[macro_use] extern crate inline_rust;
 ///
+/// // Compiles using cargo
 /// const CONST_HASH: &'static str = inline_rust!(
 ///     r#"
 ///         [dependencies]
@@ -91,6 +92,7 @@ fn exec_id(code: &str) -> String {
 ///     }
 /// );
 ///
+/// // Compiles using rustc
 /// const CONST_FOR_LOOP: i32 = inline_rust!({
 /// 	let mut sum: i32 = 0;
 /// 	for n in 0..30 {
@@ -130,10 +132,10 @@ pub fn inline_rust(tokens: TokenStream) -> TokenStream {
     let code = format!("fn inline_rust() -> impl std::fmt::Display {{\n{}\n}} fn main() {{println!(\"{{}}\", inline_rust())}}", code.trim());
 
     let exec_id = exec_id(&code);
-    let (storage_dir, target_dir) = storage::create_storage_dir(&exec_id).unwrap();
+    let storage_dir = storage::StorageDir::create(&exec_id).expect("Failed to create storage directory");
 
     let result = if let Some(manifest) = manifest {
-        cargo::try_inline(storage_dir, target_dir, manifest.trim(), &code)
+        cargo::try_inline(storage_dir.target_dir(exec_id).expect("Failed to create Cargo target directory"), storage_dir, manifest.trim(), &code)
     } else {
         rustc::try_inline(storage_dir, &code)
     };
