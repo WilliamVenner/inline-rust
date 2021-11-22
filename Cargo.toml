@@ -1,0 +1,17 @@
+[package]
+name = "inline-rust"
+version = "1.0.0"
+edition = "2021"
+authors = ["William Venner <william@venner.io>"]
+description = "A stupid macro that compiles and executes Rust and spits the output directly into your Rust code"
+keywords = ["inline", "macro", "embed", "rustc", "cargo"]
+license = "MIT"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+syn = { version = "1", features = ["full"] }
+proc-macro2 = "1"
+quote = "1"
+sha2 = "0"
