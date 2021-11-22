@@ -1,3 +1,7 @@
+[![crates.io](https://img.shields.io/crates/v/inline-rust.svg)](https://crates.io/crates/inline-rust)
+[![docs.rs](https://docs.rs/inline-rust/badge.svg)](https://docs.rs/inline-rust/)
+[![license](https://img.shields.io/crates/l/inline-rust)](https://github.com/WilliamVenner/inline-rust/blob/master/LICENSE)
+
 # inline-rust
 
 This is a stupid macro inspired by [`inline-python`](https://github.com/fusion-engineering/inline-python) that compiles and executes Rust and spits the output directly into your Rust code.
