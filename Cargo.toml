@@ -6,6 +6,7 @@ authors = ["William Venner <william@venner.io>"]
 description = "A stupid macro that compiles and executes Rust and spits the output directly into your Rust code"
 keywords = ["inline", "macro", "embed", "rustc", "cargo"]
 license = "MIT"
+repository = "https://github.com/WilliamVenner/inline-rust"
 
 [lib]
 proc-macro = true
